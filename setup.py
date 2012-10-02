@@ -21,7 +21,7 @@ except ImportError:
   from distutils.core import setup
 from sys import version_info
 
-install_requires = ['python-snappy']
+install_requires = []
 if version_info[:2] <= (2, 5):
     install_requires.append('simplejson >= 2.0.9')
 
@@ -35,6 +35,12 @@ setup(
   # Project uses simplejson, so ensure that it gets installed or upgraded
   # on the target machine
   install_requires = install_requires,
+
+  # Optional dependencies for special features:
+  # - snappy compression: Requires the snappy (system) library
+  extras_require = {
+    'snappy': ['python-snappy']
+  },
 
   # metadata for upload to PyPI
   author = 'Apache Avro',
